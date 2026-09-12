@@ -1,1370 +1,2202 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>SICHUAN — Fire, Flavor & Tradition</title>
 
-<meta name="description"
-content="Sichuan Chinese Restaurant, Addis Ababa — bold Chinese flavors, warm hospitality.">
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Noto+Serif+SC:wght@500;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Serif+SC:wght@500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 
 <style>
-:root{
-  --bg:#090909;
-  --paper:#f2ede2;
-  --red:#b52a21;
-  --gold:#caa45a;
-  --muted:#aaa399;
-  --line:#292725;
-}
+
+/* =========================================================
+   RESET
+========================================================= */
 
 *{
-  box-sizing:border-box;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
 html{
-  scroll-behavior:smooth;
+    scroll-behavior:smooth;
 }
 
 body{
-  margin:0;
-  background:var(--bg);
-  color:var(--paper);
-  font-family:"DM Sans",sans-serif;
+    background:#0b0b0b;
+    color:#f5f0e8;
+    font-family:"DM Sans",sans-serif;
+    overflow-x:hidden;
+}
+
+img{
+    max-width:100%;
+    display:block;
 }
 
 a{
-  text-decoration:none;
-  color:inherit;
+    color:inherit;
+    text-decoration:none;
 }
 
-button{
-  font:inherit;
+button,
+input,
+select,
+textarea{
+    font:inherit;
 }
+
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+:root{
+    --red:#b62d20;
+    --red2:#e24732;
+    --cream:#f5f0e8;
+    --muted:#a9a39b;
+    --dark:#0b0b0b;
+    --panel:#121212;
+    --line:rgba(255,255,255,.1);
+}
+
+
+/* =========================================================
+   SCROLLBAR
+========================================================= */
+
+::-webkit-scrollbar{
+    width:7px;
+}
+
+::-webkit-scrollbar-track{
+    background:#080808;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#8e241a;
+    border-radius:20px;
+}
+
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:1000;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:25px 6vw;
+
+    transition:
+        background .4s ease,
+        padding .4s ease,
+        backdrop-filter .4s ease;
+}
+
+.nav.scrolled{
+    background:rgba(7,7,7,.88);
+    backdrop-filter:blur(18px);
+    padding:15px 6vw;
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    font-family:"Playfair Display",serif;
+    font-size:21px;
+    letter-spacing:3px;
+}
+
+.logo-mark{
+    width:37px;
+    height:37px;
+
+    display:grid;
+    place-items:center;
+
+    border:1px solid rgba(255,255,255,.4);
+    border-radius:50%;
+
+    font-family:"Noto Serif SC",serif;
+    font-size:18px;
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:35px;
+
+    font-size:13px;
+    color:#d2cdc5;
+}
+
+.nav-links a{
+    position:relative;
+}
+
+.nav-links a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-7px;
+    width:0;
+    height:1px;
+    background:var(--red2);
+    transition:.35s ease;
+}
+
+.nav-links a:hover::after{
+    width:100%;
+}
+
+.nav-btn{
+    border:1px solid rgba(255,255,255,.35);
+    background:transparent;
+    color:white;
+
+    padding:12px 20px;
+
+    cursor:pointer;
+
+    transition:.35s ease;
+}
+
+.nav-btn:hover{
+    background:white;
+    color:#111;
+    transform:translateY(-2px);
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
 
 .hero{
-  min-height:100vh;
-  position:relative;
-  display:flex;
-  align-items:flex-end;
-  overflow:hidden;
+    min-height:100vh;
+    position:relative;
+
+    display:flex;
+    align-items:center;
+
+    overflow:hidden;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(5,5,5,.92) 0%,
+            rgba(5,5,5,.65) 48%,
+            rgba(5,5,5,.2) 100%
+        ),
+        url("https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=2000&q=90")
+        center/cover;
 }
 
-.hero:before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    linear-gradient(180deg,#0004,#0002 35%,#000e),
-    url("https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=2200&q=90")
-    center/cover;
-}
+.hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
 
-.hero:after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    radial-gradient(
-      circle at 75% 45%,
-      transparent,
-      #0009 75%
-    );
-}
+    background:
+        radial-gradient(
+            circle at 75% 50%,
+            rgba(180,45,30,.18),
+            transparent 35%
+        );
 
-nav{
-  position:absolute;
-  z-index:3;
-  top:0;
-  left:0;
-  right:0;
-  height:88px;
-  padding:0 5vw;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  border-bottom:1px solid #fff2;
-}
-
-.brand{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  font-size:12px;
-  letter-spacing:4px;
-  font-weight:700;
-}
-
-.mark{
-  width:42px;
-  height:42px;
-  border:1px solid var(--gold);
-  border-radius:50%;
-  display:grid;
-  place-items:center;
-  color:var(--gold);
-  font:20px "Noto Serif SC";
-}
-
-.links{
-  display:flex;
-  gap:30px;
-  font-size:10px;
-  letter-spacing:2px;
-  text-transform:uppercase;
-}
-
-.links a:hover{
-  color:var(--gold);
-}
-
-.navbtn,
-.btn{
-  border:1px solid #fff7;
-  background:none;
-  color:inherit;
-  padding:14px 22px;
-  font-size:10px;
-  letter-spacing:2px;
-  text-transform:uppercase;
-  cursor:pointer;
-  transition:.3s;
-}
-
-.navbtn:hover,
-.btn:hover{
-  background:var(--paper);
-  color:#111;
+    pointer-events:none;
 }
 
 .hero-content{
-  position:relative;
-  z-index:2;
-  width:min(1200px,90vw);
-  margin:auto;
-  padding:0 0 9vh;
+    position:relative;
+    z-index:2;
+
+    width:min(760px,90%);
+
+    margin-left:8vw;
+
+    padding-top:80px;
+
+    animation:heroRise 1.2s cubic-bezier(.16,1,.3,1) both;
 }
 
-.eyebrow{
-  font-size:10px;
-  letter-spacing:4px;
-  text-transform:uppercase;
-  color:var(--gold);
-  margin-bottom:18px;
+.kicker{
+    color:#d55a47;
+    text-transform:uppercase;
+    letter-spacing:5px;
+    font-size:11px;
+    margin-bottom:22px;
 }
 
 .hero h1{
-  font:
-    500 clamp(65px,11vw,150px)/.83
-    "Playfair Display",
-    serif;
-  margin:0;
+    font-family:"Playfair Display",serif;
+
+    font-size:clamp(65px,10vw,145px);
+
+    line-height:.83;
+    letter-spacing:-5px;
+
+    max-width:850px;
 }
 
-.hero h1 i{
-  color:var(--gold);
+.hero h1 span{
+    display:block;
+    color:transparent;
+    -webkit-text-stroke:1px rgba(255,255,255,.7);
 }
 
-.sub{
-  max-width:510px;
-  color:#ddd6ca;
-  line-height:1.8;
-  font-size:14px;
-  margin:28px 0;
+.hero-text{
+    margin-top:35px;
+
+    max-width:490px;
+
+    color:#c4beb5;
+    font-size:16px;
+    line-height:1.8;
 }
 
-.actions{
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
+.hero-actions{
+    margin-top:38px;
+
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
 }
 
 .primary{
-  background:var(--red);
-  border-color:var(--red);
+    border:0;
+    background:var(--red);
+    color:white;
+
+    padding:15px 25px;
+
+    cursor:pointer;
+
+    transition:.35s ease;
 }
+
+.primary:hover{
+    background:var(--red2);
+    transform:translateY(-3px);
+    box-shadow:0 12px 35px rgba(182,45,32,.3);
+}
+
+.secondary{
+    border:1px solid rgba(255,255,255,.25);
+    background:rgba(0,0,0,.2);
+    color:white;
+
+    padding:15px 25px;
+
+    cursor:pointer;
+
+    transition:.35s ease;
+}
+
+.secondary:hover{
+    background:white;
+    color:#111;
+}
+
+.hero-side{
+    position:absolute;
+    right:35px;
+    bottom:40px;
+
+    writing-mode:vertical-rl;
+
+    color:#aaa39a;
+    font-size:10px;
+    letter-spacing:4px;
+}
+
+
+/* =========================================================
+   GENERAL SECTIONS
+========================================================= */
 
 section{
-  padding:115px 5vw;
+    position:relative;
+    padding:120px 7vw;
 }
 
-.inner{
-  max-width:1200px;
-  margin:auto;
+.section-label{
+    color:#c24b39;
+    font-size:10px;
+    letter-spacing:4px;
+    text-transform:uppercase;
+    margin-bottom:20px;
 }
 
-.intro{
-  display:grid;
-  grid-template-columns:1.1fr .9fr;
-  gap:80px;
-  align-items:end;
+.section-title{
+    font-family:"Playfair Display",serif;
+    font-size:clamp(40px,6vw,78px);
+    line-height:.95;
 }
 
-.display{
-  font:
-    500 clamp(43px,6vw,82px)/.94
-    "Playfair Display",
-    serif;
-  margin:0;
+.section-copy{
+    color:#aaa39a;
+    line-height:1.8;
 }
 
-.copy{
-  color:#aaa49a;
-  line-height:1.9;
-  max-width:550px;
-  margin-top:28px;
+
+/* =========================================================
+   STORY
+========================================================= */
+
+.story{
+    background:#0d0d0d;
 }
 
-.han{
-  font:150px "Noto Serif SC";
-  color:#caa45a18;
-  text-align:right;
+.story-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+
+    gap:8vw;
+
+    align-items:center;
 }
 
-.cards{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:18px;
-  margin-top:65px;
+.story-image{
+    height:650px;
+    overflow:hidden;
+    position:relative;
 }
 
-.card{
-  height:560px;
-  position:relative;
-  overflow:hidden;
+.story-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+
+    transition:transform 1.2s cubic-bezier(.16,1,.3,1);
 }
 
-.card img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  transition:1s;
+.story-image:hover img{
+    transform:scale(1.07);
 }
 
-.card:hover img{
-  transform:scale(1.06);
+.story-image::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+        to top,
+        rgba(0,0,0,.45),
+        transparent
+    );
 }
 
-.card:after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(transparent 45%,#000d);
+.story-content{
+    max-width:600px;
 }
 
-.label{
-  position:absolute;
-  z-index:1;
-  bottom:28px;
-  left:28px;
+.story-content p{
+    margin-top:30px;
+    font-size:16px;
+    color:#a9a39b;
+    line-height:1.9;
 }
 
-.label h3{
-  font:500 30px "Playfair Display";
-  margin:0;
+.story-number{
+    margin-top:45px;
+
+    font-family:"Playfair Display",serif;
+    font-size:90px;
+    color:rgba(255,255,255,.06);
 }
 
-.label p{
-  font-size:10px;
-  letter-spacing:2px;
-  color:#ccc;
-  margin:8px 0;
-}
 
-.menuhead{
-  display:flex;
-  justify-content:space-between;
-  gap:30px;
-  align-items:end;
-}
-
-.menuhead p{
-  max-width:400px;
-  color:var(--muted);
-  line-height:1.7;
-  font-size:13px;
-}
+/* =========================================================
+   MENU
+========================================================= */
 
 .menu{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  border:1px solid var(--line);
-  margin-top:50px;
+    background:#111;
+}
+
+.menu-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:end;
+
+    gap:30px;
+
+    margin-bottom:60px;
+}
+
+.menu-header p{
+    max-width:430px;
+}
+
+.menu-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+
+    border-top:1px solid var(--line);
 }
 
 .dish{
-  padding:27px 28px;
-  border-bottom:1px solid var(--line);
-  background:#090909;
-  display:flex;
-  justify-content:space-between;
-  gap:20px;
-  transition:.3s;
-}
+    position:relative;
 
-.dish:hover{
-  background:#111;
+    padding:35px 20px 35px 0;
+
+    border-bottom:1px solid var(--line);
+
+    transition:
+        transform .4s ease,
+        padding-left .4s ease;
 }
 
 .dish:nth-child(odd){
-  border-right:1px solid var(--line);
+    border-right:1px solid var(--line);
+    padding-right:50px;
 }
 
-.dish h3{
-  font:500 21px "Playfair Display";
-  margin:0;
+.dish:nth-child(even){
+    padding-left:50px;
 }
 
-.dish p{
-  font-size:11px;
-  color:#858078;
-  margin:7px 0 0;
-  line-height:1.6;
+.dish:hover{
+    transform:translateY(-5px);
 }
 
-.num{
-  color:var(--gold);
-  font:20px "Noto Serif SC";
+.dish-name{
+    font-family:"Playfair Display",serif;
+    font-size:28px;
 }
+
+.dish-cn{
+    font-family:"Noto Serif SC",serif;
+    color:#9e988f;
+    margin-left:8px;
+    font-size:15px;
+}
+
+.dish-desc{
+    margin-top:10px;
+    max-width:450px;
+
+    color:#918c85;
+    line-height:1.6;
+    font-size:14px;
+}
+
+.dish-price{
+    position:absolute;
+    right:20px;
+    top:38px;
+
+    color:#d55442;
+}
+
+.dish:nth-child(even) .dish-price{
+    right:20px;
+}
+
+
+/* =========================================================
+   HEAT LAB
+========================================================= */
+
+.heat-lab{
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(176,43,30,.13),
+            transparent 45%
+        ),
+        #0b0b0b;
+
+    text-align:center;
+}
+
+.heat-wrap{
+    max-width:800px;
+    margin:auto;
+}
+
+.heat-title{
+    font-family:"Playfair Display",serif;
+    font-size:clamp(48px,7vw,90px);
+}
+
+.heat-sub{
+    color:#969088;
+    margin-top:18px;
+}
+
+.heat-buttons{
+    margin-top:45px;
+
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+.heat-btn{
+    min-width:55px;
+    height:55px;
+
+    border:1px solid rgba(255,255,255,.15);
+    background:rgba(255,255,255,.03);
+    color:#eee;
+
+    cursor:pointer;
+
+    transition:.3s ease;
+}
+
+.heat-btn:hover,
+.heat-btn.active{
+    background:var(--red);
+    border-color:var(--red);
+    transform:translateY(-5px);
+}
+
+.heat-result{
+    margin-top:40px;
+
+    padding:30px;
+
+    border:1px solid rgba(255,255,255,.1);
+    background:rgba(255,255,255,.025);
+
+    min-height:150px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.heat-result h3{
+    font-family:"Playfair Display",serif;
+    font-size:30px;
+}
+
+.heat-result p{
+    margin-top:10px;
+    color:#99938c;
+}
+
+
+/* =========================================================
+   FEATURE
+========================================================= */
 
 .feature{
-  padding:0;
-  background:var(--paper);
-  color:#111;
+    min-height:75vh;
+
+    display:flex;
+    align-items:center;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(5,5,5,.88),
+            rgba(5,5,5,.25)
+        ),
+        url("https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=1800&q=85")
+        center/cover;
 }
 
-.featuregrid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  min-height:650px;
+.feature-content{
+    max-width:650px;
 }
 
-.featureimg{
-  background:
-    url("https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=1500&q=90")
-    center/cover;
+.feature h2{
+    font-family:"Playfair Display",serif;
+    font-size:clamp(48px,7vw,100px);
+    line-height:.9;
 }
 
-.featurecopy{
-  padding:90px 8vw;
-  display:flex;
-  justify-content:center;
-  flex-direction:column;
+.feature p{
+    color:#b3aea7;
+    margin-top:28px;
+    max-width:500px;
+    line-height:1.8;
 }
 
-.featurecopy .eyebrow{
-  color:var(--red);
-}
 
-.featurecopy p{
-  color:#625e57;
-  line-height:1.9;
-  max-width:470px;
-}
-
-.list{
-  list-style:none;
-  padding:0;
-  border-top:1px solid #d3ccbf;
-  margin-top:20px;
-}
-
-.list li{
-  padding:16px 0;
-  border-bottom:1px solid #d3ccbf;
-  font-size:12px;
-  display:flex;
-  justify-content:space-between;
-}
-
-.list span{
-  color:var(--red);
-}
+/* =========================================================
+   VISIT
+========================================================= */
 
 .visit{
-  background:#0d0d0d;
+    background:#0e0e0e;
 }
 
-.visitgrid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:50px;
+.visit-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+
+    gap:70px;
 }
 
-.box{
-  border:1px solid var(--line);
-  padding:45px;
+.visit-box{
+    border-top:1px solid var(--line);
+    padding-top:25px;
+    margin-top:20px;
 }
 
-.row{
-  padding:22px 0;
-  border-bottom:1px solid var(--line);
+.visit-box h3{
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:3px;
+    color:#a59f97;
+    margin-bottom:12px;
 }
 
-.row:first-child{
-  padding-top:0;
+.visit-box p,
+.visit-box a{
+    color:#eee;
+    line-height:1.7;
 }
 
-.row b{
-  display:block;
-  color:var(--gold);
-  font-size:9px;
-  letter-spacing:3px;
-  text-transform:uppercase;
-  margin-bottom:9px;
+.visit-box a:hover{
+    color:#e15b48;
 }
 
-.row p{
-  color:#c2bbb0;
-  line-height:1.7;
-  font-size:13px;
-  margin:0;
+.map-link{
+    display:inline-block;
+    margin-top:25px;
+
+    border-bottom:1px solid rgba(255,255,255,.4);
+
+    padding-bottom:5px;
 }
 
-.map{
-  min-height:480px;
-  background:
-    linear-gradient(#0004,#000b),
-    url("https://images.unsplash.com/photo-1548919973-5cef591cdbc9?auto=format&fit=crop&w=1400&q=85")
-    center/cover;
-  display:grid;
-  place-items:center;
-  text-align:center;
-  padding:30px;
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+    padding:45px 7vw;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    border-top:1px solid var(--line);
+
+    color:#777;
+    font-size:12px;
 }
 
-.pin{
-  width:70px;
-  height:70px;
-  border:1px solid var(--gold);
-  border-radius:50%;
-  display:grid;
-  place-items:center;
-  margin:auto auto 20px;
-  color:var(--gold);
-  font:27px "Noto Serif SC";
+.footer-brand{
+    font-family:"Playfair Display",serif;
+    font-size:22px;
+    color:#eee;
 }
 
-.map h3{
-  font:500 34px "Playfair Display";
-  margin:0;
-}
 
-.map p{
-  color:#c8c0b4;
-  font-size:12px;
-  line-height:1.7;
-}
-
-.footer{
-  padding:65px 5vw 25px;
-  border-top:1px solid var(--line);
-}
-
-.foot{
-  max-width:1200px;
-  margin:auto;
-  display:flex;
-  justify-content:space-between;
-  gap:30px;
-}
-
-.footbrand{
-  font:46px "Playfair Display";
-}
-
-.footbrand small{
-  display:block;
-  font:9px "DM Sans";
-  letter-spacing:4px;
-  color:var(--gold);
-  margin-top:8px;
-}
-
-.socials{
-  display:flex;
-  gap:10px;
-}
-
-.social{
-  width:42px;
-  height:42px;
-  border:1px solid var(--line);
-  display:grid;
-  place-items:center;
-  transition:.3s;
-}
-
-.social:hover{
-  background:var(--paper);
-  color:#111;
-}
-
-.bottom{
-  max-width:1200px;
-  margin:50px auto 0;
-  padding-top:18px;
-  border-top:1px solid var(--line);
-  font-size:9px;
-  color:#777;
-  display:flex;
-  justify-content:space-between;
-}
+/* =========================================================
+   RESERVATION MODAL
+========================================================= */
 
 .modal{
-  position:fixed;
-  inset:0;
-  background:#000d;
-  backdrop-filter:blur(10px);
-  display:none;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
-  z-index:10;
+    position:fixed;
+    inset:0;
+
+    z-index:2000;
+
+    background:rgba(0,0,0,.8);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:20px;
+
+    opacity:0;
+    pointer-events:none;
+
+    transition:.4s ease;
 }
 
 .modal.open{
-  display:flex;
+    opacity:1;
+    pointer-events:auto;
 }
 
-.modalbox{
-  background:#151515;
-  border:1px solid var(--line);
-  padding:35px;
-  width:min(560px,100%);
+.modal-card{
+    width:min(650px,100%);
+    max-height:90vh;
+    overflow:auto;
+
+    background:#111;
+
+    border:1px solid rgba(255,255,255,.12);
+
+    padding:40px;
+
+    transform:translateY(30px) scale(.97);
+
+    transition:.5s cubic-bezier(.16,1,.3,1);
 }
 
-.modalhead{
-  display:flex;
-  justify-content:space-between;
+.modal.open .modal-card{
+    transform:translateY(0) scale(1);
+}
+
+.modal-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:start;
+
+    margin-bottom:30px;
+}
+
+.modal-title{
+    font-family:"Playfair Display",serif;
+    font-size:42px;
 }
 
 .close{
-  background:none;
-  border:0;
-  color:white;
-  font-size:28px;
-  cursor:pointer;
+    border:0;
+    background:none;
+    color:#aaa;
+
+    font-size:30px;
+
+    cursor:pointer;
 }
 
-.form{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:13px;
-  margin-top:22px;
+.form-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+}
+
+.field{
+    display:flex;
+    flex-direction:column;
+    gap:7px;
 }
 
 .field.full{
-  grid-column:1/-1;
+    grid-column:1/-1;
 }
 
 .field label{
-  display:block;
-  font-size:8px;
-  letter-spacing:2px;
-  color:var(--gold);
-  margin-bottom:7px;
+    font-size:11px;
+    color:#888;
+    text-transform:uppercase;
+    letter-spacing:2px;
 }
 
 .field input,
 .field select,
 .field textarea{
-  width:100%;
-  padding:13px;
-  background:#090909;
-  border:1px solid #292929;
-  color:white;
+    width:100%;
+
+    background:#191919;
+    color:white;
+
+    border:1px solid rgba(255,255,255,.1);
+
+    padding:14px;
+
+    outline:none;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus{
+    border-color:#b63b2c;
 }
 
 .field textarea{
-  min-height:85px;
+    resize:vertical;
+    min-height:110px;
 }
 
-.form .btn{
-  width:100%;
+.form-submit{
+    width:100%;
+    margin-top:20px;
 }
 
-@media(max-width:760px){
 
-  .links{
-    display:none;
-  }
+/* =========================================================
+   FLOATING MOBILE BUTTON
+========================================================= */
 
-  .hero-content{
-    padding-bottom:65px;
-  }
+.floating-reserve{
+    position:fixed;
 
-  .intro,
-  .cards,
-  .featuregrid,
-  .visitgrid{
-    grid-template-columns:1fr;
-  }
+    right:18px;
+    bottom:18px;
 
-  .han{
-    text-align:left;
-    font-size:100px;
-  }
+    z-index:900;
 
-  .card{
-    height:430px;
-  }
+    background:var(--red);
+    color:white;
 
-  .menuhead{
-    display:block;
-  }
+    border:0;
 
-  .menu{
-    grid-template-columns:1fr;
-  }
+    padding:15px 20px;
 
-  .dish:nth-child(odd){
-    border-right:0;
-  }
+    cursor:pointer;
 
-  .featureimg{
-    min-height:420px;
-  }
+    box-shadow:0 10px 35px rgba(0,0,0,.5);
 
-  .featurecopy{
-    padding:70px 8vw;
-  }
+    transform:translateY(100px);
 
-  .box{
-    padding:30px 22px;
-  }
-
-  .foot,
-  .bottom{
-    display:block;
-  }
-
-  .socials{
-    margin-top:25px;
-  }
-
-  .bottom p+p{
-    margin-top:10px;
-  }
-
-  .form{
-    grid-template-columns:1fr;
-  }
-
-  .field,
-  .field.full{
-    grid-column:1/-1;
-  }
+    transition:.5s cubic-bezier(.16,1,.3,1);
 }
+
+.floating-reserve.show{
+    transform:translateY(0);
+}
+
+.floating-reserve:hover{
+    background:var(--red2);
+    transform:translateY(-4px);
+}
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+.reveal{
+    opacity:0;
+    transform:translateY(45px);
+
+    transition:
+        opacity .9s ease,
+        transform .9s cubic-bezier(.16,1,.3,1);
+}
+
+.reveal.visible{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.reveal-delay{
+    transition-delay:.15s;
+}
+
+.reveal-delay2{
+    transition-delay:.3s;
+}
+
+
+/* =========================================================
+   HERO ANIMATION
+========================================================= */
+
+@keyframes heroRise{
+
+    from{
+        opacity:0;
+        transform:translateY(50px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+
+/* =========================================================
+   DECORATIVE FIRE
+========================================================= */
+
+.fire-orb{
+    position:absolute;
+
+    width:400px;
+    height:400px;
+
+    right:-100px;
+    top:35%;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(197,52,34,.15),
+            transparent 70%
+        );
+
+    filter:blur(20px);
+
+    animation:firePulse 5s ease-in-out infinite;
+
+    pointer-events:none;
+}
+
+@keyframes firePulse{
+
+    0%,100%{
+        transform:scale(1);
+        opacity:.5;
+    }
+
+    50%{
+        transform:scale(1.3);
+        opacity:.9;
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:800px){
+
+    .nav{
+        padding:18px 5vw;
+    }
+
+    .nav-links{
+        display:none;
+    }
+
+    .nav-btn{
+        padding:10px 15px;
+    }
+
+    .hero-content{
+        margin-left:6vw;
+        padding-top:100px;
+    }
+
+    .hero h1{
+        font-size:clamp(58px,17vw,95px);
+        letter-spacing:-3px;
+    }
+
+    .hero-text{
+        font-size:14px;
+    }
+
+    section{
+        padding:90px 6vw;
+    }
+
+    .story-grid,
+    .visit-grid{
+        grid-template-columns:1fr;
+    }
+
+    .story-image{
+        height:450px;
+    }
+
+    .menu-header{
+        display:block;
+    }
+
+    .menu-header p{
+        margin-top:25px;
+    }
+
+    .menu-grid{
+        grid-template-columns:1fr;
+    }
+
+    .dish:nth-child(odd){
+        border-right:0;
+        padding-right:0;
+    }
+
+    .dish:nth-child(even){
+        padding-left:0;
+    }
+
+    .dish-price,
+    .dish:nth-child(even) .dish-price{
+        right:0;
+    }
+
+    .feature{
+        min-height:650px;
+    }
+
+    footer{
+        flex-direction:column;
+        gap:15px;
+        text-align:center;
+    }
+
+    .modal-card{
+        padding:25px;
+    }
+
+    .form-grid{
+        grid-template-columns:1fr;
+    }
+
+    .field.full{
+        grid-column:auto;
+    }
+
+}
+
+@media(prefers-reduced-motion:reduce){
+
+    *,
+    *::before,
+    *::after{
+        scroll-behavior:auto !important;
+        animation:none !important;
+        transition:none !important;
+    }
+
+    .reveal{
+        opacity:1;
+        transform:none;
+    }
+
+}
+
 </style>
 </head>
 
+
 <body>
 
-<header class="hero" id="home">
 
-<nav>
+<!-- =====================================================
+     NAV
+===================================================== -->
 
-<a class="brand" href="#home">
-<span class="mark">川</span>
-SICHUAN
-</a>
+<nav class="nav" id="navbar">
 
-<div class="links">
-<a href="#story">Story</a>
-<a href="#menu">Menu</a>
-<a href="#visit">Visit</a>
-</div>
+    <a href="#home" class="logo">
 
-<button class="navbtn" onclick="openR()">
-Reserve
-</button>
+        <span class="logo-mark">川</span>
+
+        <span>SICHUAN</span>
+
+    </a>
+
+
+    <div class="nav-links">
+
+        <a href="#story">Story</a>
+
+        <a href="#menu">Menu</a>
+
+        <a href="#heatLab">Experience</a>
+
+        <a href="#visit">Visit</a>
+
+    </div>
+
+
+    <button class="nav-btn" onclick="openR()">
+        Reserve
+    </button>
 
 </nav>
 
-<div class="hero-content">
 
-<div class="eyebrow">
-Addis Ababa · Côte D'Ivoire Street
-</div>
 
-<h1>
-Fire.<br>
-<i>Flavor.</i><br>
-Tradition.
-</h1>
+<!-- =====================================================
+     HERO
+===================================================== -->
 
-<p class="sub">
-Bold Sichuan cooking, prepared with character.
-Discover a table built around spice, warmth and
-the unmistakable soul of Chinese cuisine.
-</p>
+<header class="hero" id="home">
 
-<div class="actions">
+    <div class="fire-orb"></div>
 
-<button class="btn primary" onclick="openR()">
-Reserve a Table →
-</button>
 
-<a class="btn" href="#menu">
-Explore the Menu ↓
-</a>
+    <div class="hero-content">
 
-</div>
+        <div class="kicker">
+            Addis Ababa · Chinese Cuisine
+        </div>
 
-</div>
+
+        <h1>
+            Fire.
+            <span>Flavor.</span>
+            Tradition.
+        </h1>
+
+
+        <p class="hero-text">
+            Bold Sichuan flavors, handcrafted with heat,
+            balance and tradition. A Chinese dining experience
+            in the heart of Addis Ababa.
+        </p>
+
+
+        <div class="hero-actions">
+
+            <button class="primary" onclick="openR()">
+                Reserve a Table
+            </button>
+
+            <a href="#menu" class="secondary">
+                Explore Menu
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="hero-side">
+        SICHUAN · ADDIS ABABA
+    </div>
 
 </header>
 
 
-<section id="story">
 
-<div class="inner">
+<!-- =====================================================
+     STORY
+===================================================== -->
 
-<div class="intro">
+<section class="story" id="story">
 
-<div>
-
-<div class="eyebrow">
-The Sichuan Story
-</div>
-
-<h2 class="display">
-A little heat.<br>
-A lot of soul.
-</h2>
-
-<p class="copy">
-Sichuan has built its name around authentic Chinese
-cooking and bold flavors. Chef Nebiyu Ermias brings
-years of experience to the table, with dishes made
-for adventurous diners and guests discovering
-Sichuan cuisine for the first time.
-</p>
-
-</div>
-
-<div class="han">
-味
-</div>
-
-</div>
+    <div class="story-grid">
 
 
-<div class="cards">
+        <div class="story-image reveal">
 
-<article class="card">
+            <img
+                src="https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=1200&q=85"
+                alt="Chinese cuisine"
+            >
 
-<img
-src="https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=1200&q=85"
-alt="Chinese dumplings"
->
-
-<div class="label">
-
-<h3>
-Made to share
-</h3>
-
-<p>
-Warm plates · generous tables
-</p>
-
-</div>
-
-</article>
+        </div>
 
 
-<article class="card">
+        <div class="story-content reveal reveal-delay">
 
-<img
-src="https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=1200&q=85"
-alt="Chinese cuisine"
->
+            <div class="section-label">
+                The Story
+            </div>
 
-<div class="label">
 
-<h3>
-Bold by nature
-</h3>
+            <h2 class="section-title">
+                Where heat<br>
+                becomes art.
+            </h2>
 
-<p>
-Spice · aroma · balance
-</p>
 
-</div>
+            <p>
+                Sichuan cuisine is not simply about spice.
+                It is about contrast — heat and freshness,
+                fragrance and depth, texture and balance.
+            </p>
 
-</article>
 
-</div>
+            <p>
+                At Sichuan Chinese Restaurant, traditional
+                techniques meet the ingredients and energy
+                of Addis Ababa.
+            </p>
 
-</div>
+
+            <div class="story-number">
+                01
+            </div>
+
+        </div>
+
+    </div>
 
 </section>
 
 
-<section id="menu">
 
-<div class="inner">
+<!-- =====================================================
+     MENU
+===================================================== -->
 
-<div class="menuhead">
+<section class="menu" id="menu">
 
-<div>
+    <div class="menu-header reveal">
 
-<div class="eyebrow">
-From the kitchen
-</div>
+        <div>
 
-<h2 class="display">
-Signature<br>
-dishes.
-</h2>
+            <div class="section-label">
+                From the Kitchen
+            </div>
 
-</div>
+            <h2 class="section-title">
+                Signature<br>
+                dishes.
+            </h2>
 
-<p>
-Favorites associated with Sichuan from current
-restaurant listings. For the latest complete menu
-and prices, contact the restaurant directly.
-</p>
-
-</div>
+        </div>
 
 
-<div class="menu">
+        <p class="section-copy">
+            A selection inspired by the bold flavors of
+            Sichuan — from sizzling beef to comforting
+            soups and handmade dumplings.
+        </p>
 
-<div class="dish">
-<div>
-<h3>Beef Sizzling</h3>
-<p>A signature sizzling favorite.</p>
-</div>
-<div class="num">01</div>
-</div>
+    </div>
 
-<div class="dish">
-<div>
-<h3>Mapo Tofu</h3>
-<p>Classic Sichuan comfort with aromatic heat.</p>
-</div>
-<div class="num">02</div>
-</div>
 
-<div class="dish">
-<div>
-<h3>Kung Pao Chicken</h3>
-<p>A familiar Chinese classic with bold character.</p>
-</div>
-<div class="num">03</div>
-</div>
 
-<div class="dish">
-<div>
-<h3>Hot & Sour Soup</h3>
-<p>Warm, aromatic and balanced.</p>
-</div>
-<div class="num">04</div>
-</div>
+    <div class="menu-grid">
 
-<div class="dish">
-<div>
-<h3>Vegetable Dumplings</h3>
-<p>A lighter, vegetarian-friendly favorite.</p>
-</div>
-<div class="num">05</div>
-</div>
 
-<div class="dish">
-<div>
-<h3>Sweet & Sour Chicken</h3>
-<p>Comforting, familiar and full of flavor.</p>
-</div>
-<div class="num">06</div>
-</div>
+        <article class="dish reveal">
 
-</div>
+            <div class="dish-name">
+                Sizzling Beef
+                <span class="dish-cn">水煮牛肉</span>
+            </div>
 
-<p style="color:#777;font-size:10px;margin-top:18px">
-Menu content should be replaced with the restaurant's
-approved menu before client launch.
-</p>
+            <div class="dish-desc">
+                Tender beef served with aromatic spices
+                and a deep Sichuan-style chili fragrance.
+            </div>
 
-</div>
+            <div class="dish-price">
+                ★ Chef
+            </div>
+
+        </article>
+
+
+
+        <article class="dish reveal reveal-delay">
+
+            <div class="dish-name">
+                Mapo Tofu
+                <span class="dish-cn">麻婆豆腐</span>
+            </div>
+
+            <div class="dish-desc">
+                Silky tofu, fragrant chili and Sichuan
+                peppercorn — rich, warming and addictive.
+            </div>
+
+            <div class="dish-price">
+                Hot
+            </div>
+
+        </article>
+
+
+
+        <article class="dish reveal">
+
+            <div class="dish-name">
+                Kung Pao Chicken
+                <span class="dish-cn">宫保鸡丁</span>
+            </div>
+
+            <div class="dish-desc">
+                Tender chicken, roasted peanuts and
+                aromatic sauce with a subtle kick.
+            </div>
+
+            <div class="dish-price">
+                Classic
+            </div>
+
+        </article>
+
+
+
+        <article class="dish reveal reveal-delay">
+
+            <div class="dish-name">
+                Hot & Sour Soup
+                <span class="dish-cn">酸辣汤</span>
+            </div>
+
+            <div class="dish-desc">
+                A fragrant, comforting soup balancing
+                acidity, spice and savory depth.
+            </div>
+
+            <div class="dish-price">
+                Warm
+            </div>
+
+        </article>
+
+
+
+        <article class="dish reveal">
+
+            <div class="dish-name">
+                Vegetable Dumplings
+                <span class="dish-cn">素饺子</span>
+            </div>
+
+            <div class="dish-desc">
+                Delicate dumplings filled with seasoned
+                vegetables and served with aromatic sauce.
+            </div>
+
+            <div class="dish-price">
+                Fresh
+            </div>
+
+        </article>
+
+
+
+        <article class="dish reveal reveal-delay">
+
+            <div class="dish-name">
+                Sweet & Sour Chicken
+                <span class="dish-cn">糖醋鸡</span>
+            </div>
+
+            <div class="dish-desc">
+                Crisp chicken glazed in a vibrant
+                sweet-and-sour sauce.
+            </div>
+
+            <div class="dish-price">
+                Favorite
+            </div>
+
+        </article>
+
+
+    </div>
 
 </section>
 
+
+
+<!-- =====================================================
+     HEAT LAB
+===================================================== -->
+
+<section class="heat-lab" id="heatLab">
+
+    <div class="heat-wrap reveal">
+
+        <div class="section-label">
+            The Sichuan Test
+        </div>
+
+
+        <h2 class="heat-title">
+            How much fire?
+        </h2>
+
+
+        <p class="heat-sub">
+            Choose your spice level and we'll match you
+            with a dish from the kitchen.
+        </p>
+
+
+        <div class="heat-buttons">
+
+            <button class="heat-btn active" onclick="setHeat(1,this)">
+                1
+            </button>
+
+            <button class="heat-btn" onclick="setHeat(2,this)">
+                2
+            </button>
+
+            <button class="heat-btn" onclick="setHeat(3,this)">
+                3
+            </button>
+
+            <button class="heat-btn" onclick="setHeat(4,this)">
+                4
+            </button>
+
+            <button class="heat-btn" onclick="setHeat(5,this)">
+                5
+            </button>
+
+        </div>
+
+
+        <div class="heat-result" id="heatResult">
+
+            <h3>
+                Vegetable Dumplings
+            </h3>
+
+            <p>
+                Gentle, fragrant and perfect for starting
+                your Sichuan journey.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FEATURE
+===================================================== -->
 
 <section class="feature">
 
-<div class="featuregrid">
+    <div class="feature-content reveal">
 
-<div class="featureimg"></div>
+        <div class="section-label">
+            Chef's Selection
+        </div>
 
-<div class="featurecopy">
 
-<div class="eyebrow">
-More than a meal
-</div>
+        <h2>
+            Built for<br>
+            the brave.
+        </h2>
 
-<h2 class="display">
-Come hungry.<br>
-Leave inspired.
-</h2>
 
-<p>
-A place for lunch gatherings, relaxed dinners,
-sharing plates and discovering bold Chinese flavors.
-</p>
+        <p>
+            From fragrant Sichuan peppercorn to deep
+            chili heat, every dish is designed to create
+            layers of flavor — not just fire.
+        </p>
 
-<ul class="list">
 
-<li>
-<span>01</span>
-Authentic Sichuan-inspired cooking
-<span>→</span>
-</li>
+        <button
+            class="primary"
+            onclick="openR()"
+            style="margin-top:30px;"
+        >
+            Experience Sichuan
+        </button>
 
-<li>
-<span>02</span>
-Vegetarian-friendly choices
-<span>→</span>
-</li>
-
-<li>
-<span>03</span>
-Takeaway & delivery
-<span>→</span>
-</li>
-
-<li>
-<span>04</span>
-Table reservations
-<span>→</span>
-</li>
-
-</ul>
-
-</div>
-
-</div>
+    </div>
 
 </section>
 
+
+
+<!-- =====================================================
+     VISIT
+===================================================== -->
 
 <section class="visit" id="visit">
 
-<div class="inner">
-
-<div class="eyebrow">
-Find your table
-</div>
-
-<div class="visitgrid">
-
-<div class="box">
-
-<div class="row">
-
-<b>Address</b>
-
-<p>
-Côte D'Ivoire Street<br>
-Addis Ababa, Ethiopia
-</p>
-
-</div>
+    <div class="visit-grid">
 
 
-<div class="row">
+        <div class="reveal">
 
-<b>Contact</b>
-
-<p>
-+251 91 160 3926<br>
-nebiyusichuan@gmail.com
-</p>
-
-</div>
+            <div class="section-label">
+                Find Us
+            </div>
 
 
-<div class="row">
-
-<b>Hours</b>
-
-<p>
-Monday–Saturday · 11:00–22:00<br>
-Sunday · 11:00–16:00
-</p>
-
-</div>
+            <h2 class="section-title">
+                Come<br>
+                hungry.
+            </h2>
 
 
-<div class="row">
+            <div class="visit-box">
 
-<b>Social</b>
+                <h3>
+                    Address
+                </h3>
 
-<p>
-<a
-href="https://www.facebook.com/sichuanrestaurantaddisaba/"
-target="_blank"
-rel="noopener"
->
-Facebook ↗
-</a>
-</p>
-
-</div>
-
-<button
-class="btn primary"
-onclick="openR()"
->
-Reserve a Table →
-</button>
-
-</div>
+                <p>
+                    Côte D'Ivoire Street<br>
+                    Addis Ababa, Ethiopia
+                </p>
 
 
-<div class="map">
+                <a
+                    class="map-link"
+                    href="https://www.google.com/maps/search/?api=1&query=Sichuan+Chinese+Restaurant+Addis+Ababa"
+                    target="_blank"
+                >
+                    Open in Google Maps →
+                </a>
 
-<div>
+            </div>
 
-<div class="pin">
-川
-</div>
 
-<h3>
-Côte D'Ivoire Street
-</h3>
+            <div class="visit-box">
 
-<p>
-Sichuan Chinese Restaurant<br>
-Addis Ababa
-</p>
+                <h3>
+                    Reservations
+                </h3>
 
-<a
-class="btn"
-target="_blank"
-rel="noopener"
-href="https://www.google.com/maps/search/?api=1&query=Sichuan+Chinese+Restaurant+Cote+D%27Ivoire+Street+Addis+Ababa"
->
-Open in Google Maps ↗
-</a>
+                <a href="tel:+251911603926">
+                    +251 91 160 3926
+                </a>
 
-</div>
+                <br>
 
-</div>
+                <a href="mailto:nebiyusichuan@gmail.com">
+                    nebiyusichuan@gmail.com
+                </a>
 
-</div>
+            </div>
 
-</div>
+        </div>
+
+
+
+        <div class="reveal reveal-delay">
+
+            <div class="section-label">
+                Opening Hours
+            </div>
+
+
+            <div class="visit-box">
+
+                <h3>
+                    Monday — Saturday
+                </h3>
+
+                <p>
+                    11:00 — 22:00
+                </p>
+
+            </div>
+
+
+            <div class="visit-box">
+
+                <h3>
+                    Sunday
+                </h3>
+
+                <p>
+                    11:00 — 16:00
+                </p>
+
+            </div>
+
+
+            <div class="visit-box">
+
+                <h3>
+                    Follow
+                </h3>
+
+                <a
+                    href="https://www.facebook.com/sichuanrestaurantaddisaba/"
+                    target="_blank"
+                >
+                    Facebook →
+                </a>
+
+            </div>
+
+        </div>
+
+
+    </div>
 
 </section>
 
 
-<footer class="footer">
 
-<div class="foot">
+<!-- =====================================================
+     FOOTER
+===================================================== -->
 
-<div class="footbrand">
+<footer>
 
-SICHUAN
+    <div class="footer-brand">
+        川 SICHUAN
+    </div>
 
-<small>
-FIRE · FLAVOR · TRADITION
-</small>
-
-</div>
-
-<div class="socials">
-
-<a
-class="social"
-href="https://www.facebook.com/sichuanrestaurantaddisaba/"
-target="_blank"
-rel="noopener"
->
-f
-</a>
-
-<a
-class="social"
-href="tel:+251911603926"
->
-☎
-</a>
-
-<a
-class="social"
-href="mailto:nebiyusichuan@gmail.com"
->
-✉
-</a>
-
-</div>
-
-</div>
-
-
-<div class="bottom">
-
-<span>
-© 2026 Sichuan Chinese Restaurant · Demo concept
-</span>
-
-<span>
-Addis Ababa · Ethiopia
-</span>
-
-</div>
+    <div>
+        © 2026 Sichuan Chinese Restaurant · Addis Ababa
+    </div>
 
 </footer>
 
 
+
+<!-- =====================================================
+     FLOATING RESERVE
+===================================================== -->
+
+<button
+    class="floating-reserve"
+    id="floatingReserve"
+    onclick="openR()"
+>
+    Reserve a Table
+</button>
+
+
+
+<!-- =====================================================
+     RESERVATION MODAL
+===================================================== -->
+
 <div
-class="modal"
-id="modal"
+    class="modal"
+    id="modal"
 >
 
-<div class="modalbox">
+    <div class="modal-card">
 
-<div class="modalhead">
+        <div class="modal-top">
 
-<div>
+            <div>
 
-<div class="eyebrow">
-Your table awaits
+                <div class="section-label">
+                    Table Request
+                </div>
+
+                <h2 class="modal-title">
+                    Reserve.
+                </h2>
+
+            </div>
+
+
+            <button
+                class="close"
+                onclick="closeR()"
+                aria-label="Close"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+
+        <form onsubmit="submitR(event)">
+
+            <div class="form-grid">
+
+
+                <div class="field">
+
+                    <label>
+                        Name
+                    </label>
+
+                    <input
+                        id="guestName"
+                        required
+                        placeholder="Your name"
+                    >
+
+                </div>
+
+
+
+                <div class="field">
+
+                    <label>
+                        Phone
+                    </label>
+
+                    <input
+                        id="guestPhone"
+                        required
+                        type="tel"
+                        placeholder="+251..."
+                    >
+
+                </div>
+
+
+
+                <div class="field">
+
+                    <label>
+                        Date
+                    </label>
+
+                    <input
+                        id="guestDate"
+                        required
+                        type="date"
+                    >
+
+                </div>
+
+
+
+                <div class="field">
+
+                    <label>
+                        Time
+                    </label>
+
+                    <input
+                        id="guestTime"
+                        required
+                        type="time"
+                    >
+
+                </div>
+
+
+
+                <div class="field">
+
+                    <label>
+                        Guests
+                    </label>
+
+                    <select id="guestCount">
+
+                        <option>1</option>
+                        <option selected>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8+</option>
+
+                    </select>
+
+                </div>
+
+
+
+                <div class="field">
+
+                    <label>
+                        Occasion
+                    </label>
+
+                    <select id="occasion">
+
+                        <option>Casual dining</option>
+                        <option>Date night</option>
+                        <option>Birthday</option>
+                        <option>Business dinner</option>
+                        <option>Celebration</option>
+
+                    </select>
+
+                </div>
+
+
+
+                <div class="field full">
+
+                    <label>
+                        Notes
+                    </label>
+
+                    <textarea
+                        id="guestNotes"
+                        placeholder="Anything we should know?"
+                    ></textarea>
+
+                </div>
+
+
+            </div>
+
+
+
+            <button
+                class="primary form-submit"
+                type="submit"
+            >
+                Prepare Reservation Request
+            </button>
+
+        </form>
+
+    </div>
+
 </div>
 
-<h2
-class="display"
-style="font-size:38px"
->
-Reserve.
-</h2>
-
-</div>
-
-<button
-class="close"
-onclick="closeR()"
->
-×
-</button>
-
-</div>
 
 
-<form
-class="form"
-onsubmit="submitR(event)"
->
-
-<div class="field">
-
-<label>Name</label>
-
-<input
-id="n"
-required
-placeholder="Your name"
->
-
-</div>
-
-
-<div class="field">
-
-<label>Phone</label>
-
-<input
-id="p"
-required
-placeholder="+251..."
->
-
-</div>
-
-
-<div class="field">
-
-<label>Date</label>
-
-<input
-id="d"
-type="date"
-required
->
-
-</div>
-
-
-<div class="field">
-
-<label>Time</label>
-
-<input
-id="t"
-type="time"
-required
->
-
-</div>
-
-
-<div class="field">
-
-<label>Guests</label>
-
-<select id="g">
-
-<option>2</option>
-<option>3</option>
-<option>4</option>
-<option>5</option>
-<option>6+</option>
-
-</select>
-
-</div>
-
-
-<div class="field">
-
-<label>Occasion</label>
-
-<select id="o">
-
-<option>Dinner</option>
-<option>Lunch</option>
-<option>Birthday</option>
-<option>Family</option>
-<option>Business</option>
-
-</select>
-
-</div>
-
-
-<div class="field full">
-
-<label>Notes</label>
-
-<textarea
-id="x"
-placeholder="Special request?"
-></textarea>
-
-</div>
-
-
-<div class="field full">
-
-<button
-class="btn primary"
-type="submit"
->
-Prepare Request →
-</button>
-
-</div>
-
-</form>
-
-</div>
-
-</div>
-
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
 
 <script>
 
+/* =========================================================
+   NAVBAR SCROLL
+========================================================= */
+
+const navbar = document.getElementById("navbar");
+const floatingReserve = document.getElementById("floatingReserve");
+
+window.addEventListener("scroll", () => {
+
+    if(window.scrollY > 80){
+
+        navbar.classList.add("scrolled");
+        floatingReserve.classList.add("show");
+
+    }else{
+
+        navbar.classList.remove("scrolled");
+        floatingReserve.classList.remove("show");
+
+    }
+
+});
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+const revealElements =
+    document.querySelectorAll(".reveal");
+
+const revealObserver =
+    new IntersectionObserver(
+
+        (entries) => {
+
+            entries.forEach(entry => {
+
+                if(entry.isIntersecting){
+
+                    entry.target.classList.add("visible");
+
+                    revealObserver.unobserve(entry.target);
+
+                }
+
+            });
+
+        },
+
+        {
+            threshold:.12,
+            rootMargin:"0px 0px -50px 0px"
+        }
+
+    );
+
+
+revealElements.forEach(element => {
+
+    revealObserver.observe(element);
+
+});
+
+
+/* =========================================================
+   HEAT SELECTOR
+========================================================= */
+
+const heatData = {
+
+    1:{
+        dish:"Vegetable Dumplings",
+        text:"Gentle, fragrant and perfect for starting your Sichuan journey."
+    },
+
+    2:{
+        dish:"Sweet & Sour Chicken",
+        text:"A balanced combination of sweetness, acidity and a mild kick."
+    },
+
+    3:{
+        dish:"Kung Pao Chicken",
+        text:"Classic Sichuan character with roasted peanuts and noticeable heat."
+    },
+
+    4:{
+        dish:"Mapo Tofu",
+        text:"Silky tofu, chili and Sichuan peppercorn — rich, fragrant and fiery."
+    },
+
+    5:{
+        dish:"Sizzling Beef",
+        text:"For the brave. Deep chili fragrance, aromatic spice and serious heat."
+    }
+
+};
+
+
+function setHeat(level, button){
+
+    document
+        .querySelectorAll(".heat-btn")
+        .forEach(btn => {
+
+            btn.classList.remove("active");
+
+        });
+
+
+    button.classList.add("active");
+
+
+    const result =
+        document.getElementById("heatResult");
+
+    const data =
+        heatData[level];
+
+
+    result.style.opacity = "0";
+    result.style.transform = "translateY(12px)";
+
+
+    setTimeout(() => {
+
+        result.innerHTML = `
+
+            <h3>${data.dish}</h3>
+
+            <p>${data.text}</p>
+
+        `;
+
+
+        result.style.opacity = "1";
+        result.style.transform = "translateY(0)";
+
+    },180);
+
+}
+
+
+/* =========================================================
+   RESERVATION MODAL
+========================================================= */
+
 const modal =
-document.getElementById("modal");
+    document.getElementById("modal");
 
 
 function openR(){
 
-modal.classList.add("open");
+    modal.classList.add("open");
 
-document.body.style.overflow="hidden";
+    document.body.style.overflow = "hidden";
 
 }
 
 
 function closeR(){
 
-modal.classList.remove("open");
+    modal.classList.remove("open");
 
-document.body.style.overflow="";
-
-}
-
-
-modal.addEventListener("click",function(e){
-
-if(e.target===modal){
-
-closeR();
+    document.body.style.overflow = "";
 
 }
+
+
+modal.addEventListener("click", function(event){
+
+    if(event.target === modal){
+
+        closeR();
+
+    }
 
 });
 
 
-document.addEventListener("keydown",function(e){
+document.addEventListener("keydown", function(event){
 
-if(e.key==="Escape"){
+    if(event.key === "Escape"){
 
-closeR();
+        closeR();
 
-}
+    }
 
 });
 
 
-function submitR(e){
+/* =========================================================
+   RESERVATION FORM
+========================================================= */
 
-e.preventDefault();
+function submitR(event){
 
-const text =
+    event.preventDefault();
+
+
+    const name =
+        document.getElementById("guestName").value;
+
+    const phone =
+        document.getElementById("guestPhone").value;
+
+    const date =
+        document.getElementById("guestDate").value;
+
+    const time =
+        document.getElementById("guestTime").value;
+
+    const guests =
+        document.getElementById("guestCount").value;
+
+    const occasion =
+        document.getElementById("occasion").value;
+
+    const notes =
+        document.getElementById("guestNotes").value || "None";
+
+
+    const message =
+
 `SICHUAN TABLE REQUEST
 
-Name: ${document.getElementById("n").value}
-
-Phone: ${document.getElementById("p").value}
-
-Date: ${document.getElementById("d").value}
-
-Time: ${document.getElementById("t").value}
-
-Guests: ${document.getElementById("g").value}
-
-Occasion: ${document.getElementById("o").value}
-
-Notes: ${document.getElementById("x").value || "None"}`;
+Name: ${name}
+Phone: ${phone}
+Date: ${date}
+Time: ${time}
+Guests: ${guests}
+Occasion: ${occasion}
+Notes: ${notes}`;
 
 
-if(navigator.clipboard){
+    if(navigator.clipboard){
 
-navigator.clipboard
-.writeText(text)
-.catch(()=>{});
+        navigator.clipboard
+            .writeText(message)
+            .catch(() => {});
 
-}
+    }
 
 
-alert(
-"Request prepared. Please confirm your table directly with Sichuan at +251 91 160 3926."
-);
+    alert(
+        "Reservation request prepared! " +
+        "Please confirm your table directly with Sichuan at +251 91 160 3926."
+    );
 
-closeR();
+
+    closeR();
 
 }
+
+
+/* =========================================================
+   SMOOTH ANCHOR NAVIGATION
+========================================================= */
+
+document
+    .querySelectorAll('a[href^="#"]')
+    .forEach(link => {
+
+        link.addEventListener("click", function(event){
+
+            const target =
+                document.querySelector(this.getAttribute("href"));
+
+            if(target){
+
+                event.preventDefault();
+
+                target.scrollIntoView({
+                    behavior:"smooth"
+                });
+
+            }
+
+        });
+
+    });
+
+
+/* =========================================================
+   HERO PARALLAX
+========================================================= */
+
+const hero =
+    document.querySelector(".hero");
+
+window.addEventListener("scroll", () => {
+
+    const y =
+        window.scrollY;
+
+    if(y < window.innerHeight){
+
+        hero.style.backgroundPosition =
+            `center ${50 + y * 0.025}%`;
+
+    }
+
+});
+
+
+/* =========================================================
+   DISH MICRO INTERACTION
+========================================================= */
+
+document
+    .querySelectorAll(".dish")
+    .forEach(dish => {
+
+        dish.addEventListener("mouseenter", () => {
+
+            dish.style.paddingLeft =
+                window.innerWidth > 800
+                ? "12px"
+                : "0";
+
+        });
+
+
+        dish.addEventListener("mouseleave", () => {
+
+            dish.style.paddingLeft = "";
+
+        });
+
+    });
+
+
+/* =========================================================
+   SET MINIMUM DATE FOR RESERVATION
+========================================================= */
+
+const dateInput =
+    document.getElementById("guestDate");
+
+const today =
+    new Date().toISOString().split("T")[0];
+
+dateInput.min = today;
+
+
+/* =========================================================
+   PAGE LOAD
+========================================================= */
+
+window.addEventListener("load", () => {
+
+    document.body.classList.add("loaded");
+
+});
 
 </script>
 
